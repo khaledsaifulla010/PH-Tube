@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://ibb.co.com/3ycWq81"  />
+<img src="./assets/Logo.png"  />
 </p>
 <p align="center" style="font-size: 24px;">
   PH Tube is a web-based video streaming application where users can browse and watch videos sorted by categories such as music, comedy, and tutorials.
@@ -93,10 +93,10 @@ Example: [https://openapi.programming-hero.com/api/phero-tube/video/aaac](https:
  Design Idea's
 </p>
 Basic Layout
-<img src="https://ibb.co.com/Mp7CQ67">
+<img src="./Design-Ideas/Frame 1.png">
 <hr/>
 Error Layout
 
-<img src="https://ibb.co.com/wBXyVtx">
+<img src="./Design-Ideas/Frame 3.png">
 
 <hr/>
