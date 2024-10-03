@@ -58,10 +58,14 @@ const displayAllVideos = (videosData) => {
     videoCard.classList = "card w-[460px] h-[350px] ml-4 border-2 ";
     videoCard.innerHTML = `
       <figure>
-    <img
+    <img class="h-full w-full object-cover"
       src= ${singleVideo.thumbnail}
        />
   </figure>
+
+  <span class="absolute bg-black text-white rounded-lg p-2 right-8 bottom-4"> ${
+    singleVideo.others.posted_date
+  }</span>
 
   <div class="card-body ">
 
@@ -72,10 +76,19 @@ const displayAllVideos = (videosData) => {
 
   <div>
     <h2 class="card-title font-black text-2xl">${singleVideo.title}</h2>
-    <div class="flex items-center gap-2">
-    <h2 class="card-title ">${singleVideo.authors[0].profile_name}</h2>
-    <h2 class="card-title text-blue-500"><i class="fa-solid fa-certificate"></i></h2>
+    <div class="flex items-center gap-1">
+    <h2 class="text-lg font-semibold text-gray-400">${
+      singleVideo.authors[0].profile_name
+    }</h2>
+    <h2 class="w-6">${
+      singleVideo.authors[0].verified === true
+        ? '<img src="https://img.icons8.com/?size=48&id=D9RtvkuOe31p&format=png"'
+        : ""
+    }</h2>
+    
   </div>
+
+  <h2 class=" ">${singleVideo.others.views} Views</h2>
   
   </div>
     `;
