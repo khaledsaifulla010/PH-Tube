@@ -61,6 +61,18 @@ const displayAllVideos = (videosData) => {
   const videosContainer = document.getElementById("videos");
   videosContainer.innerHTML = "";
 
+  if (videosData.length === 0) {
+    videosContainer.innerHTML = `
+      <div class=" w-[500px] ml-[500px] mt-40 flex flex-col gap-5 justify-center items-center">
+
+      <img  src = "assets/Icon.png" />
+      
+
+      </div>
+    `;
+    return;
+  }
+
   videosData.forEach((singleVideo) => {
     console.log(singleVideo);
 
