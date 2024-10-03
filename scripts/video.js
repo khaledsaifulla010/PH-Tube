@@ -24,17 +24,18 @@ const loadCategories = async () => {
 // Display Categories for Display all categories videos (2)
 
 const displayCategories = (categoriesData) => {
+  const categoriesContainer = document.getElementById("categories");
   //   console.log(categoriesData);
 
   categoriesData.forEach((singleCategory) => {
     console.log(singleCategory);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.innerHTML = `
+    
+      <button onclick="loadCategoryVideos(${singleCategory.category_id})" class="btn">${singleCategory.category}</button>
+    `;
 
-    const button = document.createElement("button");
-    button.classList = "btn";
-    button.innerText = singleCategory.category;
-    const categoriesContainer = document.getElementById("categories");
-
-    categoriesContainer.append(button);
+    categoriesContainer.append(buttonContainer);
   });
 };
 
@@ -57,11 +58,11 @@ const loadVideos = async () => {
 
 const displayAllVideos = (videosData) => {
   //   console.log(videosData);
+  const videosContainer = document.getElementById("videos");
+  videosContainer.innerHTML = "";
 
   videosData.forEach((singleVideo) => {
     console.log(singleVideo);
-
-    const videosContainer = document.getElementById("videos");
 
     const videoCard = document.createElement("div");
     videoCard.classList = "card w-[460px] h-[380px] ml-4 border-2 ";
@@ -109,6 +110,21 @@ const displayAllVideos = (videosData) => {
     `;
     videosContainer.append(videoCard);
   });
+};
+
+// Load Category Wise video (4)
+
+const loadCategoryVideos = async (category_id) => {
+  try {
+    const fetchedData = await fetch(
+      `https://openapi.programming-hero.com/api/phero-tube/category/${category_id}`
+    );
+
+    const videosData = await fetchedData.json();
+    displayAllVideos(videosData.category);
+  } catch (error) {
+    console.log("Videos is not Load !");
+  }
 };
 
 //  All Functions Call
