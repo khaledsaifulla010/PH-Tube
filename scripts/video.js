@@ -32,7 +32,7 @@ const displayCategories = (categoriesData) => {
     const buttonContainer = document.createElement("div");
     buttonContainer.innerHTML = `
     
-      <button onclick="loadCategoryVideos(${singleCategory.category_id})" class="btn">${singleCategory.category}</button>
+      <button id="btn-${singleCategory.category_id}" onclick="loadCategoryVideos(${singleCategory.category_id})" class="btn category-btn">${singleCategory.category}</button>
     `;
 
     categoriesContainer.append(buttonContainer);
@@ -66,6 +66,8 @@ const displayAllVideos = (videosData) => {
       <div class=" w-[500px] ml-[500px] mt-40 flex flex-col gap-5 justify-center items-center">
 
       <img  src = "assets/Icon.png" />
+
+      <h2 class="text-3xl font-black text-center">No Content Here in This Category </h2>
       
 
       </div>
@@ -133,6 +135,17 @@ const loadCategoryVideos = async (category_id) => {
     );
 
     const videosData = await fetchedData.json();
+
+    const activeBtn = document.getElementById(`btn-${category_id}`);
+    const allButtons = document.querySelectorAll("button");
+    allButtons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    // Add active class to the clicked button
+    activeBtn.classList.add("active");
+
+    console.log(activeBtn);
     displayAllVideos(videosData.category);
   } catch (error) {
     console.log("Videos is not Load !");

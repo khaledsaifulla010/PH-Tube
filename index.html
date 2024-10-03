@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PH Tube</title>
 
+    <link rel="stylesheet" href="./styles.css" />
+
     <!-- Favicon Link -->
     <link rel="shortcut icon" href="./assets/Logo.png" type="image/x-icon" />
 
@@ -32,6 +34,13 @@
     <style>
       body {
         font-family: "Manrope", system-ui;
+      }
+
+      .active {
+        background-color: red;
+        color: white;
+        font-weight: 800;
+        font-size: 18px;
       }
     </style>
   </head>
@@ -78,7 +87,10 @@
 
     <main>
       <!-- For All Categories Button -->
-      <div id="categories" class="flex items-center justify-center gap-6"></div>
+      <div
+        id="categories"
+        class="flex items-center justify-center gap-6 button"
+      ></div>
 
       <!-- For ALl Videos -->
       <section>
