@@ -1,3 +1,12 @@
+// Get Hour Minute Second
+const getTimeString = (time) => {
+  const hour = parseInt(time / 3600);
+  let remainingSecond = time % 3600;
+  const minute = parseInt(remainingSecond / 60);
+  remainingSecond = remainingSecond % 60;
+  return `${hour} hour ${minute} minute ${remainingSecond} second ago`;
+};
+
 // Load Categories for load all categories videos  (1)
 const loadCategories = async () => {
   try {
@@ -55,7 +64,7 @@ const displayAllVideos = (videosData) => {
     const videosContainer = document.getElementById("videos");
 
     const videoCard = document.createElement("div");
-    videoCard.classList = "card w-[460px] h-[350px] ml-4 border-2 ";
+    videoCard.classList = "card w-[460px] h-[380px] ml-4 border-2 ";
     videoCard.innerHTML = `
       <figure>
     <img class="h-full w-full object-cover"
@@ -63,11 +72,17 @@ const displayAllVideos = (videosData) => {
        />
   </figure>
 
-  <span class="absolute bg-black text-white rounded-lg p-2 right-8 bottom-4"> ${
-    singleVideo.others.posted_date
-  }</span>
+  ${
+    singleVideo.others.posted_date?.length === 0
+      ? ""
+      : `<span class="absolute bg-black text-white rounded-lg p-2 right-2 bottom-2"> ${getTimeString(
+          singleVideo.others.posted_date
+        )}</span>`
+  }
 
-  <div class="card-body ">
+  
+
+  <div class="card-body">
 
   <div class="flex items-center gap-4">
   <img class='w-16 h-16 rounded-full'
